@@ -1,0 +1,64 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phishing URL Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6dd5fa, #ffffff);
+            text-align: center;
+            margin-top: 80px;
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input[type="text"] {
+            width: 400px;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #007bff;
+            border-radius: 6px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔎 Phishing URL Detector</h1>
+
+    <form action="/predict" method="post">
+        <input type="text" name="url" placeholder="Enter URL here..." required>
+        <br><br>
+        <input type="submit" value="Check URL">
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+
+</body>
+</html>
