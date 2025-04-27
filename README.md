@@ -2,6 +2,7 @@
 This project is a simple Flask-based web application that uses an NLP machine learning model to detect whether a given URL is Phishing or Legitimate.
 
 Built with Python, Flask, and Scikit-learn.
+Dataset: https://drive.google.com/file/d/1G8hmlwgqL0ifDR0FabY0RPTh5MhYuMEA/view?usp=sharing
 
 📂 Project Structure
 /phishing-url-detector
