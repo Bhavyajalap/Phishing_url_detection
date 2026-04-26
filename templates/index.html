@@ -1,64 +1,61 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Phishing URL Detector</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #6dd5fa, #ffffff);
-            text-align: center;
-            margin-top: 80px;
-        }
-        h1 {
-            color: #333;
-            font-size: 36px;
-        }
-        form {
-            margin-top: 30px;
-        }
-        input[type="text"] {
-            width: 400px;
-            padding: 12px;
-            font-size: 18px;
-            border: 2px solid #007bff;
-            border-radius: 6px;
-        }
-        input[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 18px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            margin-top: 25px;
-            font-size: 22px;
-            font-weight: bold;
-            color: #222;
-        }
-    </style>
+    <title>Phishing Detection</title>
 </head>
 <body>
 
-    <h1>🔎 Phishing URL Detector</h1>
+<h1>Phishing URL Detector</h1>
 
-    <form action="/predict" method="post">
-        <input type="text" name="url" placeholder="Enter URL here..." required>
-        <br><br>
-        <input type="submit" value="Check URL">
+<form method="POST">
+    <input type="text" name="url" placeholder="Enter URL" size="50">
+    <button type="submit">Analyze</button>
+</form>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if label %}
+    <h2>Result</h2>
+
+    <p><strong>URL:</strong> {{ url }}</p>
+    <p><strong>Risk Score:</strong> {{ risk_score }}/100</p>
+
+    <p>
+        <strong>Status:</strong>
+        {% if label == "Safe" %}
+            <span style="color:green;">Safe</span>
+        {% elif label == "Suspicious" %}
+            <span style="color:orange;">Suspicious</span>
+        {% else %}
+            <span style="color:red;">Malicious</span>
+        {% endif %}
+    </p>
+
+    <h3>Why?</h3>
+    <ul>
+        {% for r in explanation %}
+            <li>{{ r }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Recommended Action</h3>
+    {% if label == "Safe" %}
+        <p>No action needed</p>
+    {% elif label == "Suspicious" %}
+        <p>Verify before clicking</p>
+    {% else %}
+        <p style="color:red;"><b>Do NOT click. Report immediately.</b></p>
+    {% endif %}
+
+    <form action="/feedback" method="post">
+        <input type="hidden" name="url" value="{{ url }}">
+        <button name="feedback" value="correct">Correct</button>
+        <button name="feedback" value="incorrect">Incorrect</button>
     </form>
 
-    {% if prediction_text %}
-    <div class="result">{{ prediction_text }}</div>
-    {% endif %}
+{% endif %}
 
 </body>
 </html>
