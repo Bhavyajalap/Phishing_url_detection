@@ -1,0 +1,142 @@
+/* RESET (important for consistency) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* MAIN CONTAINER */
+.container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    width: 450px;
+}
+
+/* TITLE */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+/* INPUT FIELD */
+input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: all 0.2s ease;
+}
+
+/* INPUT FOCUS */
+input[type="text"]:focus {
+    border-color: #2563eb;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/* BUTTON HOVER */
+button:hover {
+    background: #1d4ed8;
+}
+
+/* RESULT BOX */
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+}
+
+/* STATUS COLORS */
+.safe {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.suspicious {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+.malicious {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+/* EXPLANATION LIST */
+ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+/* ACTION TEXT */
+.action {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+/* ERROR MESSAGE */
+.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* FEEDBACK BUTTONS */
+.feedback-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.feedback-buttons button {
+    flex: 1;
+    background: #6b7280;
+}
+
+.feedback-buttons button:hover {
+    background: #4b5563;
+}
+
+/* DASHBOARD */
+.dashboard {
+    text-align: center;
+}
+
+.dashboard p {
+    margin: 10px 0;
+    font-size: 16px;
+}
